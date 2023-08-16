@@ -35,3 +35,40 @@ button {
     font-size: 36px;
     font-family: 'Arial Narrow', Arial, sans-serif;
 }
+
+.add, .subtract, .multiply, .divide {
+    background-color: lightgreen;
+}
+
+.add:hover, .subtract:hover, .multiply:hover, .divide:hover  {
+    background-color: rgb(114, 190, 114);
+}
+
+.add:active, .subtract:active, .multiply:active, .divide:active  {
+    background-color: rgb(98, 164, 98);
+}
+
+.equals {
+    background-color: lightcoral;
+    width: 100%;
+}
+
+.equals:hover  {
+    background-color: rgb(220, 115, 115);
+}
+
+.equals:active  {
+    background-color: rgb(181, 99, 99);
+} 
+
+.clear {
+    background-color: lightblue;
+}
+
+.clear:hover  {
+    background-color: rgb(143, 179, 191);
+}
+
+.clear:active  {
+    background-color: rgb(108, 138, 157);
+} 
