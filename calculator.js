@@ -63,6 +63,8 @@ function evaluateInput(input) {
         firstNumber = undefined;
         secondNumber = undefined;
         operator = undefined;
+        dot1 = false;
+        dot2 = false;
         results.textContent = "HELLO";
     } else if (input === "equals") {
         if (firstNumber === undefined || secondNumber === undefined || operator === undefined) {
@@ -77,13 +79,34 @@ function evaluateInput(input) {
             results.textContent = firstNumber;
         };
     } 
-    else if (firstNumber !== undefined && !dot && input === "dot") {
+    else if (firstNumber !== undefined && !operator && input === "dot") {
         dot = true;
         firstNumber += ".";
         results.textContent = firstNumber;
-    } else if (dot) {
-        // logic for handling floats
-    } else {
+    } else if (secondNumber !== undefined && operator && input === "dot") {
+        dot = true;
+        secondNumber += ".";
+        results.textContent = secondNumber;
+    } else if (dot) { // handling floats
+        if (firstNumber === undefined) {
+            input = parseFloat(input);
+            firstNumber = input;
+        } else if (operator === undefined) { // selecting numbers greater than 9
+            firstNumber = String(firstNumber);
+            firstNumber = firstNumber + input;
+            firstNumber = parseFloat(firstNumber);
+            input = firstNumber;
+        } else if (secondNumber !== undefined) {
+            secondNumber = String(secondNumber);
+            secondNumber = secondNumber + input;
+            secondNumber = parseFloat(secondNumber);
+            input = secondNumber;
+        } else {
+            input = parseFloat(input);
+            secondNumber = input;
+        };
+        results.textContent = input;
+    } else { // handling integers
         if (firstNumber === undefined) {
             input = parseInt(input);
             firstNumber = input;
