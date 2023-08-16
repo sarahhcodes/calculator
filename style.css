@@ -63,27 +63,27 @@ button:active   {
     background-color: rgb(98, 164, 98);
 }
 
-.equals {
+.clear {
     background-color: lightcoral;
+}
+
+.clear:hover  {
+    background-color: rgb(220, 115, 115);
+}
+
+.clear:active  {
+    background-color: rgb(181, 99, 99);
+} 
+
+.equals {
+    background-color: lightblue;
     width: 100%;
 }
 
 .equals:hover  {
-    background-color: rgb(220, 115, 115);
-}
-
-.equals:active  {
-    background-color: rgb(181, 99, 99);
-} 
-
-.clear {
-    background-color: lightblue;
-}
-
-.clear:hover  {
     background-color: rgb(143, 179, 191);
 }
 
-.clear:active  {
+.equals:active  {
     background-color: rgb(108, 138, 157);
 } 
