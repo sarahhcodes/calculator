@@ -1,4 +1,14 @@
 let firstNumber, secondNumber, operator;
+let displayValue;
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector('.display');
+const results = document.querySelector('.results');
+
+buttons.forEach(button => button.addEventListener('click', () => {
+    displayValue = button.className;
+    results.textContent = displayValue;
+    display.appendChild(results);
+}));
 
 function add(x,y) {
     return x + y;

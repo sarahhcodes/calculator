@@ -20,6 +20,8 @@ body {
     padding:10px;
     font-size: 72px;
     font-family: 'VT323', monospace;
+    color:#fff;
+    text-align: right;
 }
 
 .buttons {
