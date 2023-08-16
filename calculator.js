@@ -3,6 +3,7 @@ let secondNumber = undefined;
 let operator = undefined;
 let input;
 let dot = false;
+let equalsOperated = false;
 
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
@@ -34,6 +35,8 @@ function divide(x,y) {
 };
 
 function operate(operator, x, y) {
+    equalsOperated = true;
+
     if (operator == 'add') {
         return add(x,y);
     } else if (operator == 'subtract') {
@@ -50,6 +53,7 @@ function operate(operator, x, y) {
 function evaluateInput(input) {
     if (input === 'add' || input === 'subtract' || input === 'multiply' || 
         input === 'divide') {
+        equalsOperated = false;
         operator = input;
 
         if (firstNumber !== undefined && secondNumber !== undefined) {
@@ -63,8 +67,8 @@ function evaluateInput(input) {
         firstNumber = undefined;
         secondNumber = undefined;
         operator = undefined;
-        dot1 = false;
-        dot2 = false;
+        equalsOperated = false;
+        dot = false;
         results.textContent = "HELLO";
     } else if (input === "equals") {
         if (firstNumber === undefined || secondNumber === undefined || operator === undefined) {
@@ -88,7 +92,10 @@ function evaluateInput(input) {
         secondNumber += ".";
         results.textContent = secondNumber;
     } else if (dot) { // handling floats
-        if (firstNumber === undefined) {
+        if (equalsOperated) {
+            firstNumber = operate(add, firstNumber, input);
+            equalsOperated = false;
+        } else if (firstNumber === undefined) {
             input = parseFloat(input);
             firstNumber = input;
         } else if (operator === undefined) { // selecting numbers greater than 9
@@ -107,7 +114,11 @@ function evaluateInput(input) {
         };
         results.textContent = input;
     } else { // handling integers
-        if (firstNumber === undefined) {
+        if (equalsOperated) {
+            input = parseInt(input);
+            firstNumber = operate('add', firstNumber, input);
+            input = firstNumber;
+        } else if (firstNumber === undefined) {
             input = parseInt(input);
             firstNumber = input;
         } else if (operator === undefined) { // selecting numbers greater than 9
